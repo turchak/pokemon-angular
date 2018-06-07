@@ -13,16 +13,19 @@ export class PokemonService {
   pokemons: IPokemon[] = []
   currentData: IData<IPokemon>
   currentPokemonDetails: IPokemon
+  loading: boolean
   constructor(private _http: Http) {}
 
   fetchPokemons():Observable<boolean> {
     this.currentData = null
     this.pokemons = []
+    this.loading = true;
     return this
       ._http
       .get(`${POKEMON_URL}?limit=${LIMIT}&offset=${this.pokemons.length}`)
       .pipe(
         map(response => {
+          this.loading = false;
           return response.json();
         }),
         // switchMap(response => {
