@@ -1,0 +1,6 @@
+<main>
+  <mat-spinner *ngIf="service.loading" class="loader"></mat-spinner>
+  <section *ngIf="!service.loading">
+    <pok-card *ngFor="let pokemon of service.pokemons" [pokemon]='pokemon'></pok-card>
+  </section>
+</main>
