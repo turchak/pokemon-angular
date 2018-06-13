@@ -4,18 +4,16 @@ import { IPokemon } from '../../../../def/pokemon';
 @Component({
   selector: 'pok-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.sass']
+  styleUrls: ['./card.component.sass'],
 })
 export class CardComponent implements OnInit {
-  @Input()
-  pokemon: IPokemon
+  @Input() pokemon: IPokemon;
 
-  
-  constructor() { }
+  constructor() {}
 
   normalizeId(n: number) {
     let id;
-    const digits = n.toString().split("");
+    const digits = n.toString().split('');
 
     if (digits.length >= 3) {
       return n;
@@ -23,18 +21,14 @@ export class CardComponent implements OnInit {
 
     if (digits.length === 2) {
       digits.unshift('0');
-      return digits.join('')
+      return digits.join('');
     }
 
     if (digits.length === 1) {
       id = digits.unshift('0', '0');
-      return digits.join('')
+      return digits.join('');
     }
   }
 
-  ngOnInit() {
-  }
-
-  
-
+  ngOnInit() {}
 }

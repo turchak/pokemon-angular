@@ -7,22 +7,23 @@ import { Observable, throwError, of as ofObs } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PokemonService {
-  pokemons: IPokemon[] = []
-  currentData: IData<IPokemon>
-  currentPokemonDetails: IPokemon
-  loading: boolean
+  pokemons: IPokemon[] = [];
+  currentData: IData<IPokemon>;
+  currentPokemonDetails: IPokemon;
+  loading: boolean;
+  total: number;
   constructor(private _http: Http) {}
 
-  fetchPokemons():Observable<boolean> {
-    this.currentData = null
-    this.pokemons = []
+  fetchPokemons(offset: number, limit: number): Observable<boolean> {
+    console.log(offset);
+    this.currentData = null;
+    this.pokemons = [];
     this.loading = true;
-    return this
-      ._http
-      .get(`${POKEMON_URL}?limit=${LIMIT}&offset=${this.pokemons.length}`)
+    return this._http
+      .get(`${POKEMON_URL}?limit=${limit}&offset=${offset}`)
       .pipe(
         map(response => {
           this.loading = false;
@@ -35,24 +36,22 @@ export class PokemonService {
         //   }
         // }),
         map(value => {
-          this.currentData = value
-          this.pokemons = this.currentData.objects
-          return true
-        }),
-      )
-  }
-  
-  fetchDetails(id: number):Observable<boolean> {
-    this.currentPokemonDetails = null
-    return this
-      ._http
-      .get(`${POKEMON_URL_V2}${id}`)
-      .pipe(
-        map(response => response.json()),
-        map(data => {
-          this.currentPokemonDetails = data;
-          return true
+          this.currentData = value;
+          this.pokemons = this.currentData.objects;
+          this.total = this.currentData.meta.total_count;
+          return true;
         })
-      )
+      );
+  }
+
+  fetchDetails(id: number): Observable<boolean> {
+    this.currentPokemonDetails = null;
+    return this._http.get(`${POKEMON_URL_V2}${id}`).pipe(
+      map(response => response.json()),
+      map(data => {
+        this.currentPokemonDetails = data;
+        return true;
+      })
+    );
   }
 }

@@ -1,7 +1,7 @@
   <mat-card class="card">
-    <mat-card-title>Name {{pokemon.name}}</mat-card-title>
+    <mat-card-title class="card__title">{{pokemon.name}}</mat-card-title>
     <mat-card-content></mat-card-content>
     <svg mat-card-image>
-        <use [attr.xlink:href]="'/assets/media/img/pokemon-symbols.svg#' + normalizeId(pokemon.national_id) + '-' + pokemon.name.toLowerCase()"></use>
+        <use [attr.xlink:href]="'./assets/media/img/pokemon-symbols.svg#' + normalizeId(pokemon.national_id) + '-' + pokemon.name.toLowerCase()"></use>
     </svg>
   </mat-card>
