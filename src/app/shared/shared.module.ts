@@ -3,7 +3,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -11,14 +10,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule,
   ],
   exports: [
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule,
   ],
   declarations: [],
 })
