@@ -17,7 +17,7 @@ export class PokemonService {
   total: number;
   constructor(private _http: Http) {}
 
-  fetchPokemons(offset: number, limit: number): Observable<boolean> {
+  fetchPokemons(offset: number = 0, limit: number = LIMIT): Observable<boolean> {
     console.log(offset);
     this.currentData = null;
     this.pokemons = [];
