@@ -17,12 +17,13 @@ export class PokemonService {
   total: number;
   totalPages: number;
   page: number;
-  constructor(private _http: Http) {}
+  constructor(private _http: Http) {
+    this.page = 0;
+    this.totalPages = 0;
+  }
 
   fetchPokemons(offset: number = 0, limit: number = LIMIT): Observable<boolean> {
     this.currentData = null;
-    this.page = 0;
-    this.totalPages = null;
     this.pokemons = [];
     this.loading = true;
     return this._http
