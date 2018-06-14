@@ -1,4 +1,4 @@
-<ul class="paginator" *ngIf="page >= 1">
+<ul class="paginator" *ngIf="page">
   <li class="paginator__item">
     <a class="paginator__link" [class.disabled]="page === 1" (click)="GoFirst($event)">&lt;&lt;</a>
   </li>

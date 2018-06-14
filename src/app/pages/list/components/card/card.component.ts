@@ -7,7 +7,8 @@ import { IPokemon } from '../../../../def/pokemon';
   styleUrls: ['./card.component.sass'],
 })
 export class CardComponent implements OnInit {
-  @Input() pokemon: IPokemon;
+  @Input() 
+  pokemon: IPokemon;
 
   constructor() {}
 

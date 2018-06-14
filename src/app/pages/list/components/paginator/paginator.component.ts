@@ -10,13 +10,13 @@ import { LIMIT } from '../../../../def/constants';
 export class PaginatorComponent implements OnInit {
   constructor() {}
   @Input()
-  private page: number
+  page: number;
 
   @Input()
-  private totalPage: number;
+  totalPage: number;
 
   @Output()
-  private changePage: EventEmitter<number> = new EventEmitter<number>();
+  changePage: EventEmitter<number> = new EventEmitter<number>();
 
   GoNext(ev) {
     if (ev.target.classList.contains('disabled')) {

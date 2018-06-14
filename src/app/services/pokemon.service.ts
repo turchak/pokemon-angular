@@ -21,7 +21,7 @@ export class PokemonService {
 
   fetchPokemons(offset: number = 0, limit: number = LIMIT): Observable<boolean> {
     this.currentData = null;
-    this.page = null;
+    this.page = 0;
     this.totalPages = null;
     this.pokemons = [];
     this.loading = true;
