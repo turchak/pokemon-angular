@@ -18,29 +18,34 @@ export class PaginatorComponent implements OnInit {
   @Output()
   private changePage: EventEmitter<number> = new EventEmitter<number>();
 
-  next(ev) {
-    console.log(ev.target)
+  GoNext(ev) {
     if (ev.target.classList.contains('disabled')) {
       return
     }
-    this.changePage.emit((this.page) * LIMIT)
+    this.changePage.emit(this.page * LIMIT)
   }
 
-  prev(ev) {
-    console.log(ev.target)
+  GoPrev(ev) {
     if (ev.target.classList.contains('disabled')) {
       return
     }
     this.changePage.emit((this.page - 1) * LIMIT - LIMIT)
   }
 
-  first() {
-    //TODO:
+  GoFirst(ev) {
+    if (ev.target.classList.contains('disabled')) {
+      return
+    }
+    this.changePage.emit()
   }
 
-  last() {
-    //TODO:
+  GoLast(ev) {
+    if (ev.target.classList.contains('disabled')) {
+      return
+    }
+    this.changePage.emit((this.totalPage - 1) * LIMIT)
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }
