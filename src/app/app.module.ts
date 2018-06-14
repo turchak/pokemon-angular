@@ -8,22 +8,21 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { PaginatorComponent } from './components/paginator/paginator.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent,
-    PaginatorComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     SharedModule,
     AppRoutingModule,
     HttpModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

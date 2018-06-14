@@ -1,9 +1,17 @@
-<ul>
-  <li>&lt;&lt;</li>
-  <li>&lt;</li>
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-  <li>&gt;</li>
-  <li>&gt;&gt;</li>
+<ul class="paginator" *ngIf="page >= 1">
+  <li class="paginator__item">
+    <a class="paginator__link" [class.disabled]="page === 1">&lt;&lt;</a>
+  </li>
+  <li class="paginator__item" [class.disabled]="page === 1">
+    <a class="paginator__link" [class.disabled]="page === 1" (click)="prev($event)">&lt;</a>
+  </li>
+  <li class="paginator__item" [class.disabled]="page === 1" (click)="prev($event)">{{page - 1}}</li>
+  <li class="paginator__item">{{page}}</li>
+  <li class="paginator__item" [class.disabled]="page === totalPage" (click)="next($event)">{{page + 1}}</li>
+  <li class="paginator__item">
+    <a class="paginator__link" [class.disabled]="page === totalPage" (click)="next($event)">&gt;</a>
+  </li>
+  <li class="paginator__item">
+    <a class="paginator__link" [class.disabled]="page === totalPage">&gt;&gt;</a>
+  </li>
 </ul>

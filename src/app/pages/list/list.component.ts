@@ -17,6 +17,18 @@ export class ListComponent implements OnInit, OnDestroy {
       .subscribe(subscribed => {
         console.log('subscribed:', subscribed);
         console.log('currentData:', this.service.currentData);
+        console.log('currentPage:', this.service.page);
+      });
+    this._subs.push(sub);
+  }
+
+  sendRequest(query) {
+    const sub = this.service
+      .fetchPokemons(query)
+      .subscribe(subscribed => {
+        console.log('subscribed:', subscribed);
+        console.log('currentData:', this.service.currentData);
+        console.log('currentPage:', this.service.page);
       });
     this._subs.push(sub);
   }

@@ -3,5 +3,8 @@
   <section *ngIf="!service.loading" class="list__content">
     <pok-card *ngFor="let pokemon of service.pokemons" [pokemon]='pokemon'></pok-card>
   </section>
-  <!-- <pok-paginator></pok-paginator>  -->
+  <pok-paginator 
+                [page]="service.page" 
+                [totalPage]="3"
+                (changePage)="sendRequest($event)"></pok-paginator>
 </main>

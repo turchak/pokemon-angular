@@ -15,11 +15,14 @@ export class PokemonService {
   currentPokemonDetails: IPokemon;
   loading: boolean;
   total: number;
+  totalPages: number;
+  page: number;
   constructor(private _http: Http) {}
 
   fetchPokemons(offset: number = 0, limit: number = LIMIT): Observable<boolean> {
-    console.log(offset);
     this.currentData = null;
+    this.page = null;
+    this.totalPages = null;
     this.pokemons = [];
     this.loading = true;
     return this._http
@@ -37,8 +40,10 @@ export class PokemonService {
         // }),
         map(value => {
           this.currentData = value;
+          this.page = value.meta.offset / value.meta.limit + 1;
           this.pokemons = this.currentData.objects;
           this.total = this.currentData.meta.total_count;
+          this.totalPages = Math.ceil(this.total / limit)
           return true;
         })
       );
