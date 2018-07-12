@@ -22,6 +22,7 @@ export class PaginatorComponent implements OnInit {
     if (ev.target.classList.contains('disabled')) {
       return
     }
+    console.log(this.page)
     this.changePage.emit(this.page * LIMIT)
   }
 
